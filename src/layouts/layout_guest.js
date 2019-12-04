@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap';
 // import Sidebar from '../components/sidebar'
 import Login from '../pages/Signup/login.js'
 import Header from '../components/header'
+import Footer from '../components/footer'
 import { Switch,Router, Route } from 'react-router-dom';
 import history from '../history';
 
@@ -20,6 +21,7 @@ class Layout extends Component {
                       <Route path="/login" component={Login} />
                   </Switch>
                 </Router>
+                <Footer/>
             </Col>
           </Row>
       )

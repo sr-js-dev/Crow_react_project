@@ -1,8 +1,17 @@
-html, body {
+html, body  {
   height: 100vh;
   font-family: "Oxygen";
   
   }
+a {
+  color:#999999
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .btn {
   text-transform: none;
 }
@@ -31,4 +40,93 @@ html, body {
 .btn-success:not([disabled]):not(.disabled):active, .btn-success:not([disabled]):not(.disabled).active, .show > .btn-success.dropdown-toggle {
   box-shadow: 0 0 0 0 #ffff;
   background-color: #ffff !important;
+}
+.navbar-header{
+  border-bottom: solid green;
+}
+.bg-light {
+  padding-left:20px;
+  padding-right:20px;
+  background-color: #ffffff!important;
+}
+.page-header{
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.glyphicon-envelope {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 2;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  pointer-events: none;
+}
+.glyphicon-lock{
+  position: absolute;
+  top: 52px;
+  right: 10px;
+  z-index: 2;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  pointer-events: none;
+}
+.css-1szy77t-control:hover {
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+}
+.css-1szy77t-control{
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+  border-color: #80bdff !important;
+}
+:focus {
+  outline: -webkit-focus-ring-color 3px;
+}
+input:focus {
+  outline-offset: 0px;
+}
+.footer{
+    position: 'fixed';
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-Index: 10;
+}
+.pull-right {
+  float: right !important;
+}
+.page-loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.9);
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  /* opacity: 0; */
+  animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+}
+.dropdown-toggle .nav-link{
+  padding-left: 0px
+}
+.dropdown-menu {
+  /* margin-left:0.5rem */
 }

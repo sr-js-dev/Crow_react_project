@@ -2,8 +2,10 @@ import * as types from '../constants/actionTypes';
 import $ from 'jquery';
 import API from '../components/api'
 import history from '../history';
+
 export const fetchLoginData = (params) => {
     return (dispatch) => {
+        dispatch(fetchPageLoading(true));
         var settings = {
             "url": API.GetToken,
             "method": "POST",
@@ -19,11 +21,12 @@ export const fetchLoginData = (params) => {
           $.ajax(settings).done(function (response) {
           })
           .then(response => {
-            window.localStorage.setItem('nevema_token', response.access_token);
-            window.localStorage.setItem('nevema_userName', response.cuserName);
-            window.localStorage.setItem('nevema_roles', response.roles);
+            window.localStorage.setItem('crow_token', response.access_token);
+            window.localStorage.setItem('crow_userName', response.userName);
+            window.localStorage.setItem('crow_roles', response.roles);
             dispatch(fetchLoginDataSuccess(response));
-            history.push('/product')
+            history.push('/users')
+            dispatch(fetchBlankData());
         })
         .catch(err => {
             dispatch(fetchLoginDataFail(err.responseJSON.error_description));
@@ -31,11 +34,20 @@ export const fetchLoginData = (params) => {
     };
 }
 
+export const fetchPageLoading = (data) => {
+    
+    return {
+        type: types.FETCH_PAGE_LOADING,
+        loading:data
+    }
+}
+
 //login fail
 export const fetchLoginDataFail = (param) => {
     return {
         type: types.FETCH_LOGIN_FAIL,
-        error:param
+        error:param,
+        loading:false
     }
 }
 
@@ -45,6 +57,7 @@ export const fetchLoginDataSuccess = (data) => {
     return {
         type: types.FETCH_LOGIN_SUCCESS,
         UserName:data.userName,
+        loading:false,
         Role:data.roles
     }
 }

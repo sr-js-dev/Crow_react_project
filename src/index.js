@@ -11,7 +11,7 @@ import './assets/css/style.app.css';
 
 const store = configureStore()
 window.localStorage.setItem('crow_lang',  'en_US');
-window.localStorage.setItem('crow_label',  'En');
+window.localStorage.setItem('crow_label',  'English');
 window.React = React
 
 ReactDOM.render(

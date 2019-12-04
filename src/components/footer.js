@@ -1,40 +1,37 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import React, {Component} from 'react'
+import * as authAction  from '../actions/authAction';
+import {Container } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-const styles = theme => ({
-  footer: {
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 10,
-    backgroundColor: theme.palette.primary.dark,
-    padding: theme.spacing(2),
-    '& .content': {
-      textAlign: 'center',
-    },
-    '& h6': {
-      color: theme.palette.textOnPrimary,
-    },
-  },
-  link: {
-    color: '#fff',
-    textDecoration: 'none'
-  },
-  spacer: {
-    display: 'inline',
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-  },
+const mapStateToProps = state => ({ 
+    ...state.auth,
 });
+const mapDispatchToProps = (dispatch) => ({
 
-const Footer = ({ classes }) => (
-  <footer className={classes.footer}>
-    <Typography variant="subtitle2" align="center" gutterBottom>
-      {"All rights reserved. Captain's Club " + (new Date().getFullYear())}
-    </Typography>
-  </footer>
-);
+});
+class Footer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  
+        };
+    }
+    render () {
+      return (
+          <Container>
+            <footer className="footer">
+              <p>
+                <span>© {new Date().getFullYear()} - PID</span>
+                <span className="pull-right">
+                    Version 1.20180305.0
+                    <label className="label" style={{backgroundColor: "rgb(0, 128, 0)", display: "block", textAlign:"center", borderRadius:4}}>
+                        MASTER
+                    </label>
+                </span>
+              </p>
+            </footer>
+          </Container>
+      )
+    };
+  }
+  export default connect(mapStateToProps, mapDispatchToProps)(Footer);
 
-export default withStyles(styles)(Footer);
