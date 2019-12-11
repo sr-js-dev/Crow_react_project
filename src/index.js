@@ -9,9 +9,13 @@ import history from './history';
 import './assets/css/bootstrap.min.css';
 import './assets/css/style.app.css';
 
+import { getAuth } from './components/auth';
+const isAuthenticated = getAuth();
 const store = configureStore()
-window.localStorage.setItem('crow_lang',  'en_US');
-window.localStorage.setItem('crow_label',  'English');
+if(!isAuthenticated){
+  window.localStorage.setItem('crow_lang',  'en_US');
+  window.localStorage.setItem('crow_label',  'English');
+}
 window.React = React
 
 ReactDOM.render(

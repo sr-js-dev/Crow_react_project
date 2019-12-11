@@ -7,7 +7,7 @@ class ListErrors extends React.Component {
     if (errors) {
       return (
         <div className="alert alert-danger" style={{marginTop:10}}>
-            <strong>{errors}</strong>
+            <strong><i className="fas fa-exclamation-triangle"></i>  {errors}</strong>
         </div>
       );
     } else {

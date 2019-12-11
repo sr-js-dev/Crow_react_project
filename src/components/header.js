@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import * as authAction  from '../actions/authAction';
-import { NavDropdown, Navbar, Nav, Form, Container, Image } from 'react-bootstrap';
+import { NavDropdown, Navbar, Nav, Container, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import history from '../history';
 import { removeAuth } from '../components/auth';
 import { trls } from '../components/translate';
 import * as Auth from './auth'
-import $ from 'jquery';
 
 const mapStateToProps = state => ({ 
     ...state.auth,
@@ -23,7 +22,6 @@ class Header extends Component {
     }
 
     componentDidMount () {
-        $('#basic-nav-dropdown').css("display","contents")
     }
 
     logOut = () => {
@@ -36,11 +34,17 @@ class Header extends Component {
         this.setState({selectrolvalue:val.value, selectrollabel: val.label});
         this.props.changeLan(val)
     }
+
+    routeDirect = (val) => {
+        console.log('111111111', val)
+        history.push('/'+val)
+    }
+
     render () {
       return (
         <Navbar bg="light" className="navbar-header" expand="md">
             <Container>
-                <Navbar.Brand href="#home"><Image src={require("../assets/images/appmakerz.svg")} height={30}/></Navbar.Brand>
+                <Navbar.Brand href="#home"><Image src={require("../assets/images/CROW-hoofdlogo.png")} height={30}/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {window.location.pathname!=='/login'?(
@@ -49,32 +53,39 @@ class Header extends Component {
                             <Nav.Link href="#link">{trls('Projects')}</Nav.Link>
                             <Nav.Link href="#link2">{trls('Taken')}</Nav.Link>
                             <NavDropdown title={trls('Hours')} id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.1">{trls('Hours_off')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">{trls('Enter_hours')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">{trls('Approve_hours')}</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title={trls('Management')} id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown title={trls('Management')} id="basic-nav-dropdown" className="magage-nav">
+                                <NavDropdown.Item onSelect={() => this.routeDirect('users')}>{trls('Users')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.routeDirect('role')}>{trls('Role')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.routeDirect('purchase')}>{trls('Purchase')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.routeDirect('exploitation')}>{trls('Exploitation')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.routeDirect('coverage')}>{trls('Coverage')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.routeDirect('member')}>{trls('Staff_members')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.6">{trls('Activities')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.7">{trls('Zeno')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.8">{trls('Audit')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.9">{trls('Consistency_control')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.10">{trls('Adjust')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.11">{trls('Tags')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.12">{trls('Tag_groups')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.13">{trls('Documents')}</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title={Auth.getUserName()} id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1"><i className="fas fa-user icon-padding"></i>{trls('Role')} : Administrator</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2"><i className="fas fa-user icon-padding"></i>{trls('Profile')}</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action/3.3"><i className="fas fa-key icon-padding"></i>Change password</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action/3.4"><i className="fas fa-key icon-padding"></i>LogOut</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                    ):<Nav className="mr-auto"></Nav>}
-                    <Form className="" inline>
-                        {window.location.pathname!=='/login'?(
-                            <NavDropdown title={Auth.getUserName()} id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
-                        ):<Nav.Link href="#deets">{trls('Login')}</Nav.Link>}
-                    </Form>
+                    ):<Nav className="mr-auto">
+                        <Nav.Link href="#deets" className="login-nav-link">{trls('Login')}</Nav.Link>
+                    </Nav>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

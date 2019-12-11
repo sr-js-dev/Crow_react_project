@@ -21,6 +21,7 @@
     "react-cookies": "^0.1.1",
     "react-datepicker": "^2.9.6",
     "react-dom": "^16.8.6",
+    "react-ios-switch": "^0.1.19",
     "react-jquery-datatables": "^1.0.0",
     "react-loader-spinner": "^3.1.5",
     "react-numeric-input": "^2.2.3",

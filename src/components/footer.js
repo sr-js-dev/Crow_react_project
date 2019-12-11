@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import * as authAction  from '../actions/authAction';
 import {Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -17,21 +16,20 @@ class Footer extends Component {
     }
     render () {
       return (
-          <Container>
-            <footer className="footer">
+          <Container className="footer">
               <p>
                 <span>© {new Date().getFullYear()} - PID</span>
                 <span className="pull-right">
                     Version 1.20180305.0
-                    <label className="label" style={{backgroundColor: "rgb(0, 128, 0)", display: "block", textAlign:"center", borderRadius:4}}>
+                    <label className="label" style={{backgroundColor: "rgb(0, 128, 0)", display: "block", textAlign:"center", borderRadius:4, fontSize: 12}}>
                         MASTER
                     </label>
                 </span>
               </p>
-            </footer>
           </Container>
       )
     };
   }
   export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+
 

@@ -43,7 +43,6 @@ class Login extends React.Component {
     this.props.authLogin(data);
   }
   render() {
-    console.log('123');
     return (
       <Container>
           <div className="page-header">
@@ -74,8 +73,7 @@ class Login extends React.Component {
                               {trls("Forgot_password")}
                             </Link>
                         </p>
-                    <Button type="submit" variant="info" style={{textTransform:"uppercase"}}>{trls('Login')}</Button>
-                    
+                    <Button type="submit" variant="info" style={{textTransform:"uppercase"}}><i className="fas fa-sign-in-alt" style={{paddingRight:5}}></i>{trls('Login')}</Button>
                     <ListErrors errors={this.props.error}/>
                     </Form>
                 </Col>
