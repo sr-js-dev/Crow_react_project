@@ -14,6 +14,7 @@ import * as Common  from '../../components/common';
 import ListErrors from '../../components/listerrors';
 import Addrateform from './addrate_form';
 import Updaterolerateform from './updaterolerate_form';
+import { BallBeat } from 'react-pure-loaders';
 import 'datatables.net';
 import $ from 'jquery';
 
@@ -32,7 +33,8 @@ class Updateroleform extends Component {
     constructor(props) {
         super(props);
         this.state = {  
-            roleRateData: []
+            roleRateData: [],
+            loading: true,
         };
     }
     componentWillUnmount() {
@@ -55,13 +57,15 @@ class Updateroleform extends Component {
         Axios.get(API.GetFunctieTarieven+this.props.updateData.roleId, headers)
         .then(result => {
             this.setState({roleRateData: result.data.Items})
+            this.setState({loading: false})
             this.props.removeFlag();
             $('#rolerate_table').dataTable().fnDestroy();
             $('#rolerate_table').DataTable(
                 {
-                    "bPaginate": false,
-                    "bFilter": false,
-                    "bInfo": false,
+                    "aLengthMenu": [[5, 10, 15], [5, 10, 15]],
+                    "searching": false,
+                    "info": false,
+                    "bLengthChange": false,
                     "language": {
                         "lengthMenu": trls("Show")+" _MENU_ "+trls("Entries"),
                         "zeroRecords": "Nothing found - sorry",
@@ -236,6 +240,14 @@ class Updateroleform extends Component {
                                     }
                                 </tbody>)}
                             </table>
+                            { this.state.loading && (
+                                <div className="col-md-4 offset-md-4 col-xs-12 loading" style={{textAlign:"center"}}>
+                                    <BallBeat
+                                        color={'#222A42'}
+                                        loading={this.state.loading}
+                                    />
+                                </div>
+                            )}
                         </div>  
                     )}
                     
@@ -245,12 +257,14 @@ class Updateroleform extends Component {
                     onHide={() => this.setState({modalRateShow:false})}
                     roleId={updateData.roleId}
                     onGetRoleRateData={()=>this.getRoleRateData()}
+                    onSetLoading={()=>this.setState({loading: true})}
                 />
                 <Updaterolerateform
                     show={this.state.modalRateEditShow}
                     onHide={() => this.setState({modalRateEditShow:false})}
                     roleId={updateData.roleId}
                     roleRateEditData={this.state.roleRateEditData}
+                    onSetLoading={()=>this.setState({loading: true})}
                     onGetRoleRateData={()=>this.getRoleRateData()}
                 />
             </Modal.Body>

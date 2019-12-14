@@ -2,20 +2,18 @@ import React, {Component} from 'react'
 import { Row, Container } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import Adduserform from './adduserform';
+import Addmemberform from './addmember_form';
+import Updatememberform from './updatemember_form';
 import $ from 'jquery';
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
 import Axios from 'axios';
 import { BallBeat } from 'react-pure-loaders';
-// import { getUserToken } from '../../components/auth';
 import { trls } from '../../components/translate';
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import 'datatables.net';
 import * as authAction  from '../../actions/authAction';
 import * as Common from '../../components/common'
-import Select from 'react-select';
+import Sweetalert from 'sweetalert'
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -29,21 +27,35 @@ class Membermanage extends Component {
         super(props);
         this.state = {  
             memberData:[],
+            updateStaffData: [],
             loading:true,
+            updateFlag: false,
+            mainRoleData: [],
         };
     }
 
     componentDidMount() {
         this._isMounted=true
-        
-        this.getPurchaseData()
+        this.getStaffData();
+        this.getMainRoleData();
     }
 
     componentWillUnmount() {
         this._isMounted = false
     }
 
-    getPurchaseData () {
+    getMainRoleData () {
+        this._isMounted = true;
+        var headers = SessionManager.shared().getAuthorizationHeader();
+        Axios.get(API.GetFuncties, headers)
+        .then(result => {
+            if(this._isMounted){
+                this.setState({mainRoleData: result.data.Items})
+            }
+        });
+    }
+
+    getStaffData () {
         this._isMounted = true;
         this.setState({loading:true})
         var headers = SessionManager.shared().getAuthorizationHeader();
@@ -83,6 +95,55 @@ class Membermanage extends Component {
         this.setState({viewUser: val})
     }
 
+    staffUpdate = (val) =>{
+        this.setState({updateStaffData: val, modalupdateShow: true});
+        this.setState({updateFlag: true});
+
+    }
+
+    removeFlag = () => {
+        this.setState({updateFlag: false})
+    }
+
+    removeState = () => {
+        this.setState({updateStaffData: []})
+    }
+
+    staffDelete = (val) => {
+        this.setState({medewerkerid: val})
+        Sweetalert({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                this.staffDataDelete();
+                
+            } else {
+                
+            }
+          });
+    }
+
+    staffDataDelete = () => {
+        this._isMounted = true;
+        var headers = SessionManager.shared().getAuthorizationHeader();
+        let param = {
+            medewerkerid: this.state.medewerkerid
+        }
+        Axios.post(API.DeleteMedewerker, param, headers)
+        .then(result => {
+            if(this._isMounted){
+                Sweetalert("Success!"+trls('The_staff_has_been_deleted'), {
+                    icon: "success",
+                });
+                this.getStaffData()
+            }
+        });
+    }
+
     render () {
         let memberData=this.state.memberData;
         return (
@@ -92,18 +153,23 @@ class Membermanage extends Component {
                 </div>
                 <div className="orders">
                     <div className="orders__filters justify-content-between">
-                        <Button variant="success" style={{maginTop:20, maginBottome:20}} onClick={()=>this.setState({modalShow:true, mode:"add", flag:false})}><i className="fas fa-plus" style={{paddingRight:5}}></i>{trls('Add_new_staffmember')}</Button> 
-                            {/* <Adduserform
-                                show={this.state.modalShow}
-                                mode={this.state.mode}
-                                onHide={() => this.onAddformHide()}
-                                onGetUser={() => this.getUserData()}
-                                userUpdateData={this.state.userUpdateData}
-                                userID={this.state.userID}
-                                updateflag={this.state.updateflag}
-                                removeDetail={this.removeDetail}
-                            />   */}
-                        <div className="table-responsive">
+                        <Button variant="success" style={{maginTop:20, maginBottome:20}} onClick={()=>this.setState({modaladdShow:true})}><i className="fas fa-plus" style={{paddingRight:5}}></i>{trls('Add_new_staffmember')}</Button> 
+                        <Addmemberform
+                            show={this.state.modaladdShow}
+                            onHide={() => this.setState({modaladdShow: false})}
+                            onGetStaffData={()=>this.getStaffData()}
+                        />   
+                        <Updatememberform
+                            show={this.state.modalupdateShow}
+                            onHide={() => this.setState({modalupdateShow: false})}
+                            onGetStaffData={()=>this.getStaffData()}
+                            updateStaffData={this.state.updateStaffData}
+                            updateFlag={this.state.updateFlag}
+                            onRemoveUpdateFalg={()=>this.removeFlag()}
+                            mainRoleData={this.state.mainRoleData}
+                            removeState={()=>this.removeState()}
+                        /> 
+                        <div className="page-table table-responsive">
                             <table id="member_table" className="place-and-orders__table table table--striped prurprice-dataTable" width="100%">
                             <thead>
                                 <tr>
@@ -129,11 +195,23 @@ class Membermanage extends Component {
                                             <td>{data.Personeelsnummer}</td>
                                             <td>{Common.formatDate(data['Datum uit dienst'])}</td>
                                             <td>{Common.formatDate(data['Datum in dienst'])}</td>
-                                            <td>{data.Direct}</td>
+                                            {data.Direct?(
+                                                <td>
+                                                    <Row style={{justifyContent:"center"}}>
+                                                    <i className="fas fa-circle active-icon"></i><div>True</div>
+                                                    </Row>
+                                                </td>
+                                            ):
+                                                <td >
+                                                    <Row style={{justifyContent:"center"}}>
+                                                    <i className="fas fa-circle inactive-icon"></i><div>False</div>
+                                                    </Row>
+                                                </td>
+                                            }
                                             <td>
-                                                 <Row style={{justifyContent:"space-around", paddingRight:"20px", paddingLeft:"20px"}}>
-                                                    <i id={data.id} className="fas fa-edit action-icon" style={{color:'#0C84FF'}} onClick={this.userDeleteConfirm}></i>
-                                                    <i id={data.id} className="fas fa-trash-alt action-icon" style={{color:'#F06D80'}} onClick={this.userDeleteConfirm}></i>
+                                                <Row style={{justifyContent:"space-around", paddingRight:"20px", paddingLeft:"20px"}}>
+                                                    <i id={data.id} className="fas fa-edit action-icon" style={{color:'#0C84FF'}} onClick={()=>this.staffUpdate(data)}></i>
+                                                    <i id={data.id} className="fas fa-trash-alt action-icon" style={{color:'#F06D80'}} onClick={()=>this.staffDelete(data.id)}></i>
                                                 </Row>
                                             </td>
                                         </tr>

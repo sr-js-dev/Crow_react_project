@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
-import Select from 'react-select';
 import { connect } from 'react-redux';
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
 import Axios from 'axios';
 import { trls } from '../../components/translate';
 import * as authAction  from '../../actions/authAction';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import * as Common  from '../../components/common';
+import * as Auth  from '../../components/auth';
 
 const mapStateToProps = state => ({ 
     ...state.auth,
@@ -18,12 +21,13 @@ const mapDispatchToProps = (dispatch) => ({
     postUserError: (params) =>
         dispatch(authAction.dataServerFail(params)),
 });
-class Addpurchaseform extends Component {
+
+class Addstartdateform extends Component {
     _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {  
-            val1: ''
+            startdate: new Date(),
         };
     }
     componentWillUnmount() {
@@ -36,6 +40,7 @@ class Addpurchaseform extends Component {
 
     handleSubmit = (event) => {
         this._isMounted = true;
+        let updateData = this.props.startDateUpdateData;
         event.preventDefault();
         const clientFormData = new FormData(event.target);
         const data = {};
@@ -44,13 +49,22 @@ class Addpurchaseform extends Component {
         }
         var headers = SessionManager.shared().getAuthorizationHeader();
         var params = {
-            Naam:data.description,
-            Artikel:data.artikel
+            id: updateData.id,
+            achternaam: updateData.achternaam,
+            voornaam: updateData.voornaam,
+            email: updateData.email,
+            urenperweek: updateData.urenperweek,
+            personeelsnummer: updateData.personeelsnummer,
+            uitdienst: updateData.uitdienst,
+            indienst: updateData.indienst,
+            Direct: updateData.Direct? true: '',
+            startdate: Common.formatDate(this.state.startdate),
+            username: Auth.getUserName()
         }
-        Axios.post(API.PostInkoop, params, headers)
+        Axios.post(API.PutMedewerkerStartdate, params, headers)
         .then(result => {
             this.props.onHide();
-            this.props.onGetPurchaseData();    
+            this.props.onfinishSaveStaff();    
         })
         .catch(err => {
         });
@@ -61,71 +75,29 @@ class Addpurchaseform extends Component {
         this.props.blankdispatch();
     }
 
-    changeHourType = (val) => {
-        let hourTypeArray = this.props.hourTypeData;
-        hourTypeArray.map((data, index)=>{
-            if(data.key===val.value){
-                this.setState({Kostprijs: data.KOSTPRIJS})
-                this.setState({Prijs: data.PRIJS})
-            }
-            return hourTypeArray;
-        });
-    }
-
-    changeArticle = (val) => {
-
-    }
-    
     render(){
-        let artikelenData = [];
-        if(this.props.artikelenData){
-            artikelenData = this.props.artikelenData.map( s => ({value:s.key,label:s.value}) );
-        }
         return (
             <Modal
                 show={this.props.show}
                 onHide={this.onHide}
-                size="xl"
+                size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 backdrop= "static"
                 centered
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {trls('New_purhcase')}
+                    {trls('Start_Date')}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form className="container product-form" onSubmit = { this.handleSubmit }>
                     <Form.Group as={Row} controlId="email">
                         <Form.Label column sm="3">
-                        {trls('Description')}   
+                        {trls('Start_Date')}   
                         </Form.Label>
                         <Col sm="9" className="product-text input-div">
-                            <Form.Control type="text" name="description" className="input-text" required placeholder={trls('Description')} />
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row} controlId="password">
-                        <Form.Label column sm="3">
-                        {trls('Article')}   
-                        </Form.Label>
-                        <Col sm="9" className="product-text" style={{height:"auto"}}>
-                            <Select
-                                name="artikel"
-                                options={artikelenData}
-                                placeholder={trls('Select')}
-                                onChange={val => this.setState({val1:val})}
-                            />
-                            {!this.props.disabled && (
-                                <input
-                                    onChange={val=>console.log()}
-                                    tabIndex={-1}
-                                    autoComplete="off"
-                                    style={{ opacity:0, height: 0, width: "100%"}}
-                                    value={this.state.val1}
-                                    required
-                                />
-                            )}
+                            <DatePicker name="invoicedate" className="myDatePicker" selected={this.state.startdate} onChange={date =>this.setState({startdate:date})} />
                         </Col>
                     </Form.Group>
                     <Form.Group style={{textAlign:"center"}}>
@@ -137,4 +109,4 @@ class Addpurchaseform extends Component {
         );
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Addpurchaseform);
+export default connect(mapStateToProps, mapDispatchToProps)(Addstartdateform);

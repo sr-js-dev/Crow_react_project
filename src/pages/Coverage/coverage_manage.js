@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import { Row, Container } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import Adduserform from './adduserform';
+import Updatecoverageform from './updatecoverage_form';
 import $ from 'jquery';
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
@@ -14,7 +13,6 @@ import { trls } from '../../components/translate';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import 'datatables.net';
 import * as authAction  from '../../actions/authAction';
-import Select from 'react-select';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -34,15 +32,23 @@ class Coveragemanage extends Component {
 
     componentDidMount() {
         this._isMounted=true
-        
-        this.getExploitationData()
+        this.getCoverageData();
+        this.getArtikelenData();
     }
 
     componentWillUnmount() {
         this._isMounted = false
     }
 
-    getExploitationData () {
+    getArtikelenData = () =>{
+        var headers = SessionManager.shared().getAuthorizationHeader();
+        Axios.get(API.GetArtikelenFromDWH, headers)
+        .then(result => {
+            this.setState({artikelenData: result.data.Items})  
+        })
+    }
+
+    getCoverageData () {
         this._isMounted = true;
         this.setState({loading:true})
         var headers = SessionManager.shared().getAuthorizationHeader();
@@ -85,6 +91,19 @@ class Coveragemanage extends Component {
         this.setState({viewUser: val})
     }
 
+    updatePurchase = (val) =>{
+        let updateData = val;
+        let artikelenArray = this.state.artikelenData
+        artikelenArray.map((data, index)=>{
+            if(data.key===val.Artikel){
+                updateData.artikel = {"value":data.key, "label":data.value};
+            }
+            return artikelenArray;
+        });
+        this.setState({updateData: updateData})
+        this.setState({modalupdateShow: true})
+    }
+
     render () {
         let coverageData=this.state.coverageData;
         return (
@@ -94,16 +113,13 @@ class Coveragemanage extends Component {
                 </div>
                 <div className="orders">
                     <div className="orders__filters justify-content-between">
-                            {/* <Adduserform
-                                show={this.state.modalShow}
-                                mode={this.state.mode}
-                                onHide={() => this.onAddformHide()}
-                                onGetUser={() => this.getUserData()}
-                                userUpdateData={this.state.userUpdateData}
-                                userID={this.state.userID}
-                                updateflag={this.state.updateflag}
-                                removeDetail={this.removeDetail}
-                            />   */}
+                        <Updatecoverageform
+                            show={this.state.modalupdateShow}
+                            onHide={() => this.setState({modalupdateShow: false})}
+                            artikelenData={this.state.artikelenData}
+                            onGetCoverageData={()=>this.getCoverageData()}
+                            updateData={this.state.updateData}
+                        />  
                         <div className="table-responsive">
                             <table id="coverage_table" className="place-and-orders__table table table--striped prurprice-dataTable" width="100%">
                             <thead>
@@ -123,7 +139,7 @@ class Coveragemanage extends Component {
                                             <td>{data.percentage}</td>
                                             <td>
                                                  <Row style={{justifyContent:"center"}}>
-                                                    <i id={data.id} className="fas fa-edit action-icon" style={{color: '#0C84FF'}} onClick={this.userDeleteConfirm}></i>
+                                                    <i id={data.id} className="fas fa-edit action-icon" style={{color: '#0C84FF'}} onClick={()=>this.updatePurchase(data)}></i>
                                                 </Row>
                                             </td>
                                         </tr>

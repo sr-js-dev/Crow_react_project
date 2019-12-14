@@ -71,7 +71,7 @@ class Adduserform extends Component {
             <Modal
                 show={this.props.show}
                 onHide={this.onHide}
-                size="lg"
+                size="xl"
                 aria-labelledby="contained-modal-title-vcenter"
                 backdrop= "static"
                 centered

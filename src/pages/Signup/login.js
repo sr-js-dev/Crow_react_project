@@ -8,7 +8,6 @@ import { trls } from '../../components/translate';
 import Select from 'react-select';
 import Pageloadspiiner from '../../components/page_load_spinner';
 
-
 const mapStateToProps = state => ({ ...state.auth });
 
 const mapDispatchToProps = dispatch => ({

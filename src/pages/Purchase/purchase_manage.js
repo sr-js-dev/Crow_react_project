@@ -3,6 +3,7 @@ import { Row, Container } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Addpurchaseform from './addpurchase_form';
+import Updatepurchaseform from './updatepurchase_form'
 import $ from 'jquery';
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
@@ -14,7 +15,6 @@ import { trls } from '../../components/translate';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import 'datatables.net';
 import * as authAction  from '../../actions/authAction';
-import Select from 'react-select';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -29,6 +29,7 @@ class Purchasemanage extends Component {
         this.state = {  
             purchaseData: [],
             artikelenData: [],
+            updateData: [],
             loading:true,
         };
     }
@@ -58,7 +59,6 @@ class Purchasemanage extends Component {
         Axios.get(API.GetInkoop, headers)
         .then(result => {
             if(this._isMounted){
-                // console.log('123', result)
                 this.setState({purchaseData:result.data.Items})
                 this.setState({loading:false})
                 $('#purchase_table').dataTable().fnDestroy();
@@ -91,6 +91,19 @@ class Purchasemanage extends Component {
         this.setState({viewUser: val})
     }
 
+    updatePurchase = (val) =>{
+        let updateData = val;
+        let artikelenArray = this.state.artikelenData
+        artikelenArray.map((data, index)=>{
+            if(data.key===val.Artikel){
+                updateData.artikel = {"value":data.key, "label":data.value};
+            }
+            return artikelenArray;
+        });
+        this.setState({updateData: updateData})
+        this.setState({modalupdateShow: true})
+    }
+
     render () {
         let purchaseData=this.state.purchaseData;
         return (
@@ -103,10 +116,17 @@ class Purchasemanage extends Component {
                         <Button variant="success" style={{maginTop:20, maginBottome:20}} onClick={()=>this.setState({modaladdShow:true})}><i className="fas fa-plus" style={{paddingRight:5}}></i>{trls('Add_new_purchase')}</Button> 
                             <Addpurchaseform
                                 show={this.state.modaladdShow}
-                                mode={this.state.mode}
                                 onHide={() => this.setState({modaladdShow: false})}
                                 artikelenData={this.state.artikelenData}
+                                onGetPurchaseData={()=>this.getPurchaseData()}
                             />  
+                            <Updatepurchaseform
+                                show={this.state.modalupdateShow}
+                                onHide={() => this.setState({modalupdateShow: false})}
+                                artikelenData={this.state.artikelenData}
+                                onGetPurchaseData={()=>this.getPurchaseData()}
+                                updateData={this.state.updateData}
+                            />
                         <div className="table-responsive">
                             <table id="purchase_table" className="place-and-orders__table table table--striped prurprice-dataTable" width="100%">
                             <thead>
@@ -124,7 +144,7 @@ class Purchasemanage extends Component {
                                             <td>{data.Artikel}</td>
                                             <td>
                                                  <Row style={{justifyContent:"center"}}>
-                                                    <i id={data.id} className="fas fa-edit action-icon" style={{color: '#0C84FF'}} onClick={this.userDeleteConfirm}></i>
+                                                    <i id={data.id} className="fas fa-edit action-icon" style={{color: '#0C84FF'}} onClick={()=>this.updatePurchase(data)}></i>
                                                 </Row>
                                             </td>
                                         </tr>

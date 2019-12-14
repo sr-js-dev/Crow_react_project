@@ -53,6 +53,7 @@ class Addrateform extends Component {
         Axios.post(API.PostFunctietarief, params, headers)
         .then(result => {
             this.props.onHide();
+            this.props.onSetLoading();
             this.props.onGetRoleRateData();
         })
         .catch(err => {

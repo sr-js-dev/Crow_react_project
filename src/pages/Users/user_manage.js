@@ -242,7 +242,7 @@ class Usermanage extends Component {
                                                 <Select
                                                     name="roles"
                                                     options={roleData}
-                                                    // value={{"value":roledata,"label": roledata}}
+                                                    className="select-user-class"
                                                     placeholder={trls('Select')}
                                                     onChange={val => this.setRole(val, data.Id)}
                                                     defaultValue={this.selectRole(data.RoleId)}

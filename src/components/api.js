@@ -20,6 +20,20 @@ export default {
     PostFunctietarief: `${BASEURL}/postFunctietarief`,
     GetFunctieTarieven: `${BASEURL}/getFunctieTarieven?functieid=`,
     PutFunctietarief: `${BASEURL}/putFunctietarief`,
+    PostInkoop: `${BASEURL}/postInkoop`,
+    PutInkoop: `${BASEURL}/putInkoop`,
+    GetZenoArtikelen: `${BASEURL}/getZenoArtikelen`,
+    PutExploitatie: `${BASEURL}/putExploitatie`,
+    PutDekking: `${BASEURL}/putDekking`,
+    PostMedewerker: `${BASEURL}/postMedewerker`,
+    GetMedewerkerNormen: `${BASEURL}/getMedewerkerNormen?medewerkerid=`,
+    GetFuncties: `${BASEURL}/getFuncties`,
+    PostMedewerkerNormen: `${BASEURL}/postMedewerkerNormen`,
+    PutMedewerkerNormen: `${BASEURL}/putMedewerkerNormen`,
+    PutMedewerkerStartdate: `${BASEURL}/putMedewerkerStartdate`,
+    PutMedewerker: `${BASEURL}/putMedewerker`,
+    DeleteMedewerker: `${BASEURL}/deleteMedewerker`,
+    DeleteMedewerkerNormen: `${BASEURL}/deleteMedewerkerNormen`,
   };
   
   

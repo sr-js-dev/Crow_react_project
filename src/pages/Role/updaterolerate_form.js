@@ -57,6 +57,7 @@ class Updaterolerateform extends Component {
         Axios.post(API.PutFunctietarief, params, headers)
         .then(result => {
             this.props.onHide();
+            this.props.onSetLoading();
             this.props.onGetRoleRateData();
         })
         .catch(err => {

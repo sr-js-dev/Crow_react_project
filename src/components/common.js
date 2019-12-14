@@ -12,7 +12,7 @@ export const formatDate = (startdate) => {
     {
         mm='0'+mm;
     } 
-    formatDate = dd+'-'+mm+'-'+yyyy;
+    formatDate = yyyy+'-'+mm+'-'+dd;
     return formatDate;
 };
 

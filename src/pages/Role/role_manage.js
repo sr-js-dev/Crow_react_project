@@ -131,6 +131,18 @@ class Rolemanage extends Component {
         this.setState({updateFlag: false})
     }
 
+    getCoverItem = (val)=>{
+        let articleData = this.state.articleData;
+        let returnValue = ''
+        articleData.map((data, index)=>{
+            if(data.key===val){
+                returnValue = data.value
+            }
+            return articleData;
+        });
+        return returnValue;
+    }
+
     render () {
         let roleData=this.state.roleData;
         return (
@@ -173,7 +185,7 @@ class Rolemanage extends Component {
                                         <tr id={i} key={i}>
                                             <td>{data.Omschrijving}</td>
                                             <td>{data.Uursoort}</td>
-                                            <td>{data.Omschrijving}</td>
+                                            <td>{this.getCoverItem(data.Dekkingsartikel)}</td>
                                             <td>
                                                  <Row style={{justifyContent:"center"}}>
                                                     <i id={data.Id} className="fas fa-edit action-icon" style={{color: '#0C84FF'}} onClick={()=>this.updateRole(data)}></i>
