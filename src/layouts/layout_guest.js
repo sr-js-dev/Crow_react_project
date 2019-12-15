@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-// import Sidebar from '../components/sidebar'
 import Login from '../pages/Signup/login'
+import Changepassword from '../pages/Signup/changepassword'
+import Activity from '../pages/Activity/activity_manage'
 import User from '../pages/Users/user_manage'
 import Role from '../pages/Role/role_manage'
 import Purchase from '../pages/Purchase/purchase_manage'
@@ -13,10 +14,9 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import { Switch,Router, Route } from 'react-router-dom';
 import history from '../history';
-
 window.localStorage.setItem('AWT', true);
+
 class Layout extends Component {
-  
     render () {
       return (
           <Row style={{height:"100%"}}>
@@ -31,6 +31,8 @@ class Layout extends Component {
                       <Route path="/exploitation" component={Exploitation}/>
                       <Route path="/coverage" component={Coverage}/>
                       <Route path="/member" component={Member}/>
+                      <Route path="/changepasword" component={Changepassword}/>
+                      <Route path="/activities" component={Activity}/>
                   </Switch>
                 </Router>
                 <Footer/>

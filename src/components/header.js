@@ -35,8 +35,7 @@ class Header extends Component {
         this.props.changeLan(val)
     }
 
-    routeDirect = (val) => {
-        console.log('111111111', val)
+    goRoute = (val) => {
         history.push('/'+val)
     }
 
@@ -58,13 +57,13 @@ class Header extends Component {
                                 <NavDropdown.Item href="#action/3.3">{trls('Approve_hours')}</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title={trls('Management')} id="basic-nav-dropdown" className="magage-nav">
-                                <NavDropdown.Item onSelect={() => this.routeDirect('users')}>{trls('Users')}</NavDropdown.Item>
-                                <NavDropdown.Item onSelect={() => this.routeDirect('role')}>{trls('Role')}</NavDropdown.Item>
-                                <NavDropdown.Item onSelect={() => this.routeDirect('purchase')}>{trls('Purchase')}</NavDropdown.Item>
-                                <NavDropdown.Item onSelect={() => this.routeDirect('exploitation')}>{trls('Exploitation')}</NavDropdown.Item>
-                                <NavDropdown.Item onSelect={() => this.routeDirect('coverage')}>{trls('Coverage')}</NavDropdown.Item>
-                                <NavDropdown.Item onSelect={() => this.routeDirect('member')}>{trls('Staff_members')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.6">{trls('Activities')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('users')}>{trls('Users')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('role')}>{trls('Role')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('purchase')}>{trls('Purchase')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('exploitation')}>{trls('Exploitation')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('coverage')}>{trls('Coverage')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('member')}>{trls('Staff_members')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('activities')}>{trls('Activities')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.7">{trls('Zeno')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.8">{trls('Audit')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.9">{trls('Consistency_control')}</NavDropdown.Item>
@@ -78,9 +77,9 @@ class Header extends Component {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.2"><i className="fas fa-user icon-padding"></i>{trls('Profile')}</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.3"><i className="fas fa-key icon-padding"></i>Change password</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('changepasword')}><i className="fas fa-key icon-padding"></i>Change password</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4"><i className="fas fa-key icon-padding"></i>LogOut</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.logOut()}><i className="fas fa-key icon-padding"></i>LogOut</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     ):<Nav className="mr-auto">

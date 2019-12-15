@@ -34,6 +34,11 @@ export default {
     PutMedewerker: `${BASEURL}/putMedewerker`,
     DeleteMedewerker: `${BASEURL}/deleteMedewerker`,
     DeleteMedewerkerNormen: `${BASEURL}/deleteMedewerkerNormen`,
+    ChangePassword: `${BASEURL_1}/Account/ChangePassword`,
+    GetActiviteitenGrid: `${BASEURL}/getActiviteitenGrid`,
+    PostActiviteit: `${BASEURL}/postActiviteit`,
+    PutActiviteit: `${BASEURL}/putActiviteit`,
+    DeleteActiviteiten: `${BASEURL}/deleteActiviteiten`,
   };
   
   

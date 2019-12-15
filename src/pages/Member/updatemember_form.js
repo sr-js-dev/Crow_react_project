@@ -227,6 +227,7 @@ class Updatememberform extends Component {
         if(this.state.updateStaffDataSup){
             updateStaffDataSup = this.state.updateStaffDataSup;
         }
+
         return (
             <Modal
                 show={this.props.show}

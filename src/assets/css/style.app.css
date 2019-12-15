@@ -78,6 +78,33 @@ a {
   text-align: center;
   pointer-events: none;
 }
+
+.glyphicon-old-lock{
+  position: absolute;
+  top: -2px;
+  right: 10px;
+  z-index: 2;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.glyphicon-confirm-lock{
+  position: absolute;
+  top: 92px;
+  right: 10px;
+  z-index: 2;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  pointer-events: none;
+}
+
 .css-1szy77t-control:hover {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   color: #495057;
@@ -261,7 +288,7 @@ td:last-child {
 }
 .myDatePicker {
   width:100%;
-  height:calc(1.5em + .75rem + 5px);;
+  height:calc(1.5em + .75rem + 8px);;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
@@ -286,4 +313,23 @@ input[type=checkbox], input[type=radio] {
 .form-check-label {
   padding-top: 1px;
   padding-left: 6px;
+}
+.sort-style {
+  background : none !important;
+  border-top: 1px solid #fff !important;
+}
+table.dataTable thead th {
+  padding: 10px 18px;
+  border-bottom: 1px solid #ddd;
+}
+table.dataTable.no-footer {
+  border-bottom: 1px solid #ddd;
+}
+.table td {
+  padding: .75rem;
+  vertical-align: middle;
+  border-top: 1px solid #fff !important;
+}
+.table--striped tbody tr:nth-child(2n) {
+  background-color: rgba(49, 83, 97, 0.05);
 }

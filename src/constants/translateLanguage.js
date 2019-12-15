@@ -89,7 +89,14 @@ export const TRANSLATIONS = {
       Edit_norm_hours: 'Edit Nrom Hours',
       Start_Date: 'Start Date',
       The_norm_hour_has_been_deleted: 'The norm hour has been deleted!',
-      The_staff_has_been_deleted: 'The staff has been deleted!'
+      The_staff_has_been_deleted: 'The staff has been deleted!',
+      Password_change: 'Password Change',
+      Old_password: 'Old password',
+      New_password: 'New password',
+      Confirm_newpassword: 'Confirm new password',
+      Value: 'Value',
+      Add_new_activity: 'Add new activity',
+      New_activity: 'New activity'
     },
 
     nl_BE: {
@@ -183,6 +190,13 @@ export const TRANSLATIONS = {
       Edit_norm_hours: 'Bewerk Norm Uren',
       Start_Date: 'Begin Datum',
       The_norm_hour_has_been_deleted: 'Het normuur is verwijderd!',
-      The_staff_has_been_deleted: 'Het personeel is verwijderd'
+      The_staff_has_been_deleted: 'Het personeel is verwijderd',
+      Password_change: 'Wachtwoord Verandering',
+      Old_password: 'Oud wachtwoord',
+      New_password: 'Nieuwe Wachtwoord',
+      Confirm_newpassword: 'Bevestigen nieuwe wachtwoord',
+      Value: 'Waarde',
+      Add_new_activity: 'Toevoegen nieuwe werkzaamheid',
+      New_activity: 'Nieuwe werkzaamheid'
     }
   };

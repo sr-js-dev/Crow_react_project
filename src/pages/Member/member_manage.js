@@ -62,11 +62,24 @@ class Membermanage extends Component {
         Axios.get(API.GetMedewerkerGrid, headers)
         .then(result => {
             if(this._isMounted){
-                // console.log('123', result)
                 this.setState({memberData:result.data.Items})
                 this.setState({loading:false})
+                // $('#member_table thead tr').clone(true).appendTo( '#member_table thead' );
+                // $('#member_table thead tr:eq(1) th').each( function (i) {
+                //     var title = $(this).text();
+                //     $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+                //     $(this).addClass("sort-style");
+                //     $( 'input', this ).on( 'keyup change', function () {
+                //         if ( table.column(i).search() !== this.value ) {
+                //             table
+                //                 .column(i)
+                //                 .search( this.value )
+                //                 .draw();
+                //         }
+                //     } );
+                // } );
                 $('#member_table').dataTable().fnDestroy();
-                $('#member_table').DataTable(
+                var table = $('#member_table').DataTable(
                     {
                       "language": {
                           "lengthMenu": trls("Show")+" _MENU_ "+trls("Entries"),
@@ -80,6 +93,8 @@ class Membermanage extends Component {
                             "next": trls('Next')
                           }
                       },
+                      orderCellsTop: true,
+                      fixedHeader: true
                     }
                   );
             }

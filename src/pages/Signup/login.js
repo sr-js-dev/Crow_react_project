@@ -46,7 +46,7 @@ class Login extends React.Component {
       <Container>
           <div className="page-header">
               <h2>{trls('Login')+'.'}</h2>
-              <Row>
+              <Row style={{paddingTop: 20}}>
                 <Col md={4}>
                     <Form onSubmit = { this.handleSubmit }>
                         {/* <ListErrors errors={this.props.error} /> */}
