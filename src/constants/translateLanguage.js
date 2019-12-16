@@ -112,7 +112,15 @@ export const TRANSLATIONS = {
       Type: 'Type',
       Edit_activity: 'Edit Activity',
       Label: 'Label',
-      Edit_setting: 'Edit Setting'
+      Edit_setting: 'Edit Setting',
+      Group: 'Group',
+      Add_new_taggroup: 'Add new tag group',
+      New_taggroup: 'New Tag Groop',
+      TagGroup: 'TagGroup',
+      New_tag: 'New Tag',
+      Edit_tag: 'Edit Tag',
+      Add_new_tag: 'Add new tag',
+      Project: 'Project'
     },
 
     nl_BE: {
@@ -229,6 +237,14 @@ export const TRANSLATIONS = {
       Type: 'Type',
       Edit_activity: 'Bewerk Werkzaamheid',
       Label: 'Label',
-      Edit_setting: 'Bewerk Instelligen'
+      Edit_setting: 'Bewerk Instelligen',
+      Group: 'Groep',
+      Add_new_taggroup: 'Toevoegen nieuwe tag groep',
+      New_taggroup: 'Nieuwe Tag Groep',
+      TagGroup: 'TagGroep',
+      New_tag: 'Nieuw Tag',
+      Edit_tag: 'Bewerk Tag',
+      Add_new_tag: 'Toevoegen Nieuwe Tag',
+      Project: 'Project'
     }
   };

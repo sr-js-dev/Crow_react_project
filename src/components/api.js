@@ -48,5 +48,16 @@ export default {
     GetMenu: `${BASEURL}/getMenu`,
     GetInstellingen: `${BASEURL}/getInstellingen`,
     PutInstelling: `${BASEURL}/putInstelling`,
+    GetTagGroups: `${BASEURL}/getTagGroups`,
+    PostTagGroup: `${BASEURL}/postTagGroup`,
+    DeleteTagGroup: `${BASEURL}/deleteTagGroup`,
+    GetTags: `${BASEURL}/getTags`,
+    PostTag: `${BASEURL}/postTag`,
+    GetProjectsByTag: `${BASEURL}/getProjectsByTag?tagid=`,
+    GetProjectDropdown: `${BASEURL}/getProjectDropdown?username=`,
+    DeleteTagProject: `${BASEURL}/deleteTagProject`,
+    PostTagProject: `${BASEURL}/postTagProject`,
+    DeleteTag: `${BASEURL}/deleteTag`,
   };
+  
   

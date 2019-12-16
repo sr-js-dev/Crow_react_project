@@ -68,8 +68,8 @@ class Header extends Component {
                                 <NavDropdown.Item onSelect={() => this.goRoute('audit')}>{trls('Audit')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('consistency')}>{trls('Consistency_control')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('settings')}>{trls('Settings')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.11">{trls('Tags')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.12">{trls('Tag_groups')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('tag')}>{trls('Tags')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('tag-group')}>{trls('Tag_groups')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.13">{trls('Documents')}</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title={Auth.getUserName()} id="basic-nav-dropdown">
