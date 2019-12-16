@@ -12,7 +12,7 @@ import { trls } from '../../components/translate';
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import 'datatables.net';
-import * as authAction  from '../../actions/authAction';
+import * as authAction  from '../../actions/authAction';    
 
 const mapStateToProps = state => ({ ...state.auth });
 

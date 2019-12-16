@@ -47,32 +47,34 @@ class Changepassword extends React.Component {
   }
   render() {
     return (
-      <Container>
-          <div className="page-header">
-              <h2>{trls('Password_change')}</h2>
-              <Row style={{paddingTop: 20}}>
-                <Col md={4}>
-                    <Form onSubmit = { this.handleSubmit }>
-                        <Form.Group controlId="form">
-                            <Form.Control type="password" name="OldPassword" className="login-input-password" placeholder={trls("Old_password")}/>
-                            <span className="glyphicon-old-lock"><i className="fas fa-lock"></i></span>
-                        </Form.Group>
-                        <Form.Group controlId="form">
-                            <Form.Control type="password" name="NewPassword" className="login-input-password" placeholder={trls("New_password")}/>
-                            <span className="glyphicon-lock"><i className="fas fa-lock"></i></span>
-                        </Form.Group>
-                        <Form.Group controlId="form">
-                            <Form.Control type="password" name="ConfirmPassword" className="login-input-password" placeholder={trls("Confirm_newpassword")}/>
-                            <span className="glyphicon-confirm-lock"><i className="fas fa-lock"></i></span>
-                        </Form.Group>
-                        <Button type="submit" variant="success" style={{width:"100px"}}><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
-                    <ListErrors errors={this.props.error}/>
-                    </Form>
-                </Col>
-              </Row>
-          </div>
-          <Pageloadspiiner/>
-      </Container>
+        <div>
+            <Container>
+                <div className="page-header">
+                    <h2>{trls('Password_change')}</h2>
+                    <Row style={{paddingTop: 20}}>
+                        <Col md={4}>
+                            <Form onSubmit = { this.handleSubmit }>
+                                <Form.Group controlId="form">
+                                    <Form.Control type="password" name="OldPassword" className="login-input-password" placeholder={trls("Old_password")}/>
+                                    <span className="glyphicon-old-lock"><i className="fas fa-lock"></i></span>
+                                </Form.Group>
+                                <Form.Group controlId="form">
+                                    <Form.Control type="password" name="NewPassword" className="login-input-password" placeholder={trls("New_password")}/>
+                                    <span className="glyphicon-lock"><i className="fas fa-lock"></i></span>
+                                </Form.Group>
+                                <Form.Group controlId="form">
+                                    <Form.Control type="password" name="ConfirmPassword" className="login-input-password" placeholder={trls("Confirm_newpassword")}/>
+                                    <span className="glyphicon-confirm-lock"><i className="fas fa-lock"></i></span>
+                                </Form.Group>
+                                <Button type="submit" variant="success" style={{width:"100px"}}><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
+                            <ListErrors errors={this.props.error}/>
+                            </Form>
+                        </Col>
+                    </Row>
+                </div>
+                <Pageloadspiiner/>
+            </Container>
+        </div>
     );
   }
 }

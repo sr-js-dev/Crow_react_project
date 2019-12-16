@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(authAction.dataServerFail(params)),
 });
 
-class Activityform extends Component {
+class Settingform extends Component {
     _isMounted = false;
     constructor(props) {
         super(props);
@@ -35,31 +35,17 @@ class Activityform extends Component {
 
     handleSubmit = (event) => {
         this._isMounted = true;
-        let params = [];
-        let url = '';
         event.preventDefault();
         const clientFormData = new FormData(event.target);
         const data = {};
         for (let key of clientFormData.keys()) {
             data[key] = clientFormData.get(key);
         }
-        if(!this.props.updateFlag){
-            params = {
-                omschrijving: data.omschrijving
-            }
-            url = API.PostActiviteit
-        }else{
-            params = {
-                omschrijving: data.omschrijving,
-                id: this.props.updateActivityData.key
-            }
-            url = API.PutActiviteit
-        }
         var headers = SessionManager.shared().getAuthorizationHeader();
-        Axios.post(url, params, headers)
+        Axios.post(API.PutInstelling, data, headers)
         .then(result => {
             this.props.onHide();
-            this.props.onGetActivityData();
+            this.props.onGetSettingData();
         })
         .catch(err => {
         });
@@ -70,7 +56,7 @@ class Activityform extends Component {
     }
     
     render(){
-        let updateData=this.props.updateActivityData;
+        let updateData=this.props.updateData;
         return (
             <Modal
                 show={this.props.show}
@@ -82,17 +68,25 @@ class Activityform extends Component {
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {!this.props.updateFlag?(trls('New_activity')):trls('Edit_activity')}
+                    {trls('Edit_setting')}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form className="container product-form" onSubmit = { this.handleSubmit }>
                     <Form.Group as={Row} controlId="email">
                         <Form.Label column sm="3">
-                        {trls('Description')}   
+                        {trls('Value')}   
                         </Form.Label>
                         <Col sm="9" className="product-text input-div">
-                            <Form.Control type="text" name="omschrijving" className="input-text" defaultValue={updateData.value} required placeholder={trls('Description')} />
+                            <Form.Control type="number" name="waarde" className="input-text" defaultValue={updateData.Waarde} required placeholder={trls('Description')} />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="email">
+                        <Form.Label column sm="3">
+                        {trls('Label')}   
+                        </Form.Label>
+                        <Col sm="9" className="product-text input-div">
+                            <Form.Control type="text" name="label" className="input-text" defaultValue={updateData.Label} required placeholder={trls('Description')} />
                         </Col>
                     </Form.Group>
                     <Form.Group style={{textAlign:"center"}}>
@@ -104,4 +98,4 @@ class Activityform extends Component {
         );
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Activityform);
+export default connect(mapStateToProps, mapDispatchToProps)(Settingform);

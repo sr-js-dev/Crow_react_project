@@ -46,7 +46,7 @@ class Header extends Component {
                 <Navbar.Brand href="#home"><Image src={require("../assets/images/CROW-hoofdlogo.png")} height={30}/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    {window.location.pathname!=='/login'?(
+                    {window.location.pathname!=='/login' && window.location.pathname!=='/reset-password-email' && window.location.pathname!=='/reset-password/'?(
                         <Nav className="mr-auto">
                             <Nav.Link href="#home">{trls('Dashboard')}</Nav.Link>
                             <Nav.Link href="#link">{trls('Projects')}</Nav.Link>
@@ -64,10 +64,10 @@ class Header extends Component {
                                 <NavDropdown.Item onSelect={() => this.goRoute('coverage')}>{trls('Coverage')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('member')}>{trls('Staff_members')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('activities')}>{trls('Activities')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.7">{trls('Zeno')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.8">{trls('Audit')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.9">{trls('Consistency_control')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.10">{trls('Adjust')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('zeno')}>{trls('Zeno')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('audit')}>{trls('Audit')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('consistency')}>{trls('Consistency_control')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('settings')}>{trls('Settings')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.11">{trls('Tags')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.12">{trls('Tag_groups')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.13">{trls('Documents')}</NavDropdown.Item>
@@ -77,13 +77,13 @@ class Header extends Component {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.2"><i className="fas fa-user icon-padding"></i>{trls('Profile')}</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item onSelect={() => this.goRoute('changepasword')}><i className="fas fa-key icon-padding"></i>Change password</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('changepassword')}><i className="fas fa-key icon-padding"></i>Change password</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onSelect={() => this.logOut()}><i className="fas fa-key icon-padding"></i>LogOut</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     ):<Nav className="mr-auto">
-                        <Nav.Link href="#deets" className="login-nav-link">{trls('Login')}</Nav.Link>
+                        <Nav.Link onClick={() => this.goRoute('login')} className="login-nav-link">{trls('Login')}</Nav.Link>
                     </Nav>}
                 </Navbar.Collapse>
             </Container>

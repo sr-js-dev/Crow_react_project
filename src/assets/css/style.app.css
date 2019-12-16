@@ -333,3 +333,6 @@ table.dataTable.no-footer {
 .table--striped tbody tr:nth-child(2n) {
   background-color: rgba(49, 83, 97, 0.05);
 }
+.search-table-input{
+  width: 100%;
+}

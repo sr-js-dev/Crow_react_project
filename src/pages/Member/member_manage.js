@@ -79,7 +79,7 @@ class Membermanage extends Component {
                 //     } );
                 // } );
                 $('#member_table').dataTable().fnDestroy();
-                var table = $('#member_table').DataTable(
+                $('#member_table').DataTable(
                     {
                       "language": {
                           "lengthMenu": trls("Show")+" _MENU_ "+trls("Entries"),

@@ -7,6 +7,7 @@ import ListErrors from '../../components/listerrors';
 import { trls } from '../../components/translate';
 import Select from 'react-select';
 import Pageloadspiiner from '../../components/page_load_spinner';
+import Header from '../../components/header'
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -43,43 +44,46 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <Container>
-          <div className="page-header">
-              <h2>{trls('Login')+'.'}</h2>
-              <Row style={{paddingTop: 20}}>
-                <Col md={4}>
-                    <Form onSubmit = { this.handleSubmit }>
-                        {/* <ListErrors errors={this.props.error} /> */}
-                        <Form.Group controlId="form">
-                            <Form.Control type="text" name="username" className="login-input-email" placeholder={trls("Login")}/>
-                            <span className="glyphicon-envelope"><i className="fas fa-envelope"></i></span>
-                        </Form.Group>
-                        <Form.Group controlId="form">
-                            <Form.Control type="password" name="password" className="login-input-password" placeholder={trls("Password")}/>
-                            <span className="glyphicon-lock"><i className="fas fa-lock"></i></span>
-                        </Form.Group>
-                        <Form.Group controlId="form" style={{textAlign:'left'}}>
-                            <Select
-                                name="lan"
-                                options={this.state.languages}
-                                className="login-select-lang-class"
-                                value={{"label":this.state.selectrollabel,"value":this.state.selectrolvalue}}
-                                onChange={val => this.changeLangauge(val)}
-                            />
-                        </Form.Group>
-                        <p className="text-xs-center">
-                            <Link to="/register" style={{color:"#158cba"}}>
-                              {trls("Forgot_password")}
-                            </Link>
-                        </p>
-                    <Button type="submit" variant="info" style={{textTransform:"uppercase"}}><i className="fas fa-sign-in-alt" style={{paddingRight:5}}></i>{trls('Login')}</Button>
-                    <ListErrors errors={this.props.error}/>
-                    </Form>
-                </Col>
-              </Row>
-          </div>
-          <Pageloadspiiner/>
-      </Container>
+      <div>
+        <Header/>
+        <Container>
+            <div className="page-header">
+                <h2>{trls('Login')+'.'}</h2>
+                <Row style={{paddingTop: 20}}>
+                  <Col md={4}>
+                      <Form onSubmit = { this.handleSubmit }>
+                          {/* <ListErrors errors={this.props.error} /> */}
+                          <Form.Group controlId="form">
+                              <Form.Control type="text" name="username" className="login-input-email" placeholder={trls("Login")}/>
+                              <span className="glyphicon-envelope"><i className="fas fa-envelope"></i></span>
+                          </Form.Group>
+                          <Form.Group controlId="form">
+                              <Form.Control type="password" name="password" className="login-input-password" placeholder={trls("Password")}/>
+                              <span className="glyphicon-lock"><i className="fas fa-lock"></i></span>
+                          </Form.Group>
+                          <Form.Group controlId="form" style={{textAlign:'left'}}>
+                              <Select
+                                  name="lan"
+                                  options={this.state.languages}
+                                  className="login-select-lang-class"
+                                  value={{"label":this.state.selectrollabel,"value":this.state.selectrolvalue}}
+                                  onChange={val => this.changeLangauge(val)}
+                              />
+                          </Form.Group>
+                          <p className="text-xs-center">
+                              <Link to="/reset-password-email" style={{color:"#158cba"}}>
+                                {trls("Forgot_password")}
+                              </Link>
+                          </p>
+                      <Button type="submit" variant="info" style={{textTransform:"uppercase"}}><i className="fas fa-sign-in-alt" style={{paddingRight:5}}></i>{trls('Login')}</Button>
+                      <ListErrors errors={this.props.error}/>
+                      </Form>
+                  </Col>
+                </Row>
+            </div>
+            <Pageloadspiiner/>
+        </Container>
+      </div>
     );
   }
 }

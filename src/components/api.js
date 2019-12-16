@@ -1,6 +1,7 @@
 const BASEURL = 'http://brandnewkey.sohosted-vps.nl:8080/api/factory/execute/local';
 const BASEURL_1 = 'http://brandnewkey.sohosted-vps.nl:8080/api'
 export default {
+    BASEURL: `${BASEURL}/`,
     GetToken: `http://brandnewkey.sohosted-vps.nl:8080/token`,
     GetUser: `${BASEURL}/getUsers`,
     GetRollen: `${BASEURL}/getRollen`,
@@ -39,6 +40,13 @@ export default {
     PostActiviteit: `${BASEURL}/postActiviteit`,
     PutActiviteit: `${BASEURL}/putActiviteit`,
     DeleteActiviteiten: `${BASEURL}/deleteActiviteiten`,
+    SendForgotPasswordEmail: `${BASEURL_1}/accountmanagemnet/SendForgotPasswordEmail?`,
+    ResetPassword: `${BASEURL_1}/accountmanagemnet/ResetPassword?`,
+    GetGekoppeldeZenoArtikelen: `${BASEURL}/getGekoppeldeZenoArtikelen`,
+    GetNietGekoppeldeZenoArtikelen: `${BASEURL}/getNietGekoppeldeZenoArtikelen`,
+    GetAudit: `${BASEURL}/getAudit`,
+    GetMenu: `${BASEURL}/getMenu`,
+    GetInstellingen: `${BASEURL}/getInstellingen`,
+    PutInstelling: `${BASEURL}/putInstelling`,
   };
-  
   
