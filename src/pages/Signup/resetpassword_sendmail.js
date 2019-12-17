@@ -60,7 +60,7 @@ class Resetpasswordsendmail extends React.Component {
                                             <Form.Control type="email" name="email" className="login-input-password" placeholder={trls("Email")}/>
                                             <span className="glyphicon-envelope"><i className="fas fa-envelope"></i></span>
                                         </Form.Group>
-                                        <Button type="submit" variant="success" style={{width:"100px"}}><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
+                                        <Button type="submit" variant="success"><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
                                     <ListErrors errors={this.props.error}/>
                                     </Form>
                                 </Col>

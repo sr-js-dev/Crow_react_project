@@ -86,7 +86,7 @@ class Resetpassword extends React.Component {
                                         <Form.Control type="password" name="ConfirmPassword" className="login-input-password" placeholder={trls("Confirm_password")}/>
                                         <span className="glyphicon-confirm-lock"><i className="fas fa-lock"></i></span>
                                     </Form.Group>
-                                    <Button type="submit" variant="success" style={{width:"100px"}}><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
+                                    <Button type="submit" variant="success"><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
                                 <ListErrors errors={this.props.error}/>
                                 </Form>
                             </Col>

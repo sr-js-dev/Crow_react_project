@@ -135,7 +135,7 @@ class Updatecoverageform extends Component {
                         </Col>
                     </Form.Group>
                     <Form.Group style={{textAlign:"center"}}>
-                        <Button type="submit" variant="success" style={{width:"100px"}}><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
+                        <Button type="submit" variant="success"><i className="fas fa-save" style={{paddingRight:5}}></i>{trls('Save')}</Button>
                     </Form.Group>
                 </Form>
             </Modal.Body>
