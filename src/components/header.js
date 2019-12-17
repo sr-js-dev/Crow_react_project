@@ -70,7 +70,7 @@ class Header extends Component {
                                 <NavDropdown.Item onSelect={() => this.goRoute('settings')}>{trls('Settings')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('tag')}>{trls('Tags')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('tag-group')}>{trls('Tag_groups')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.13">{trls('Documents')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('documents')}>{trls('Documents')}</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title={Auth.getUserName()} id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1"><i className="fas fa-user icon-padding"></i>{trls('Role')} : Administrator</NavDropdown.Item>

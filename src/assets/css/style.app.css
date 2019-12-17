@@ -267,7 +267,7 @@ td:last-child {
   padding-right:7px
 }
 .input-div{
-  height:37px !important
+  height:auto !important
 }
 .input-text{
   height: 100%;
@@ -335,4 +335,7 @@ table.dataTable.no-footer {
 }
 .search-table-input{
   width: 100%;
+}
+.document-name{
+  margin-bottom: 35px;
 }

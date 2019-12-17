@@ -120,7 +120,19 @@ export const TRANSLATIONS = {
       New_tag: 'New Tag',
       Edit_tag: 'Edit Tag',
       Add_new_tag: 'Add new tag',
-      Project: 'Project'
+      Project: 'Project',
+      Document: 'Document',
+      Documenttype: 'Documenttype',
+      Add_new_document: 'Add new document',
+      New_Document: 'New Document',
+      File: 'File',
+      Choose_File: 'Choose File',
+      Name: 'Name',
+      Projectcode: 'Projectcode',
+      Financial_year: 'FinancialYear',
+      Relationship: 'Relationship',
+      Project_led: 'Projectled',
+      File_upload_faile: 'File upload faile!'
     },
 
     nl_BE: {
@@ -245,6 +257,18 @@ export const TRANSLATIONS = {
       New_tag: 'Nieuw Tag',
       Edit_tag: 'Bewerk Tag',
       Add_new_tag: 'Toevoegen Nieuwe Tag',
-      Project: 'Project'
+      Project: 'Project',
+      Document: 'Document',
+      Documenttype: 'Documenttype',
+      Add_new_document: 'Toevoegen nieuwe document',
+      New_Document: 'Nieuwe Document',
+      File: 'Bestand',
+      Choose_File: 'Kiezen Bestand',
+      Name: 'Naam',
+      Projectcode: 'Projectcode',
+      Financial_year: 'Boekjaar',
+      Relationship: 'Relatie',
+      Project_led: 'Projectleide',
+      File_upload_faile: 'Bestand uploaden mislukt!'
     }
   };

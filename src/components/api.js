@@ -58,6 +58,19 @@ export default {
     DeleteTagProject: `${BASEURL}/deleteTagProject`,
     PostTagProject: `${BASEURL}/postTagProject`,
     DeleteTag: `${BASEURL}/deleteTag`,
+    GetDocuments: `${BASEURL}/getDocuments`,
+    GetDocumentFile: `${BASEURL_1}/factory/download-file/`,
+    DocumentFileUpload: `${BASEURL_1}/factory/upload-file`,
+    GetDocumentTypeDropdown: `${BASEURL}/getDocumentTypeDropdown`,
+    GetDebiteurenDropdown: `${BASEURL}/getDebiteurenDropdown`,
+    GetMedewerkerDropdown: `${BASEURL}/getMedewerkerDropdown`,
+    PostDocuments: `${BASEURL}/postDocuments`,
+    PostDocumentProjects: `${BASEURL}/postDocumentProjects`,
+    PostDocumentBoekjaren: `${BASEURL}/postDocumentBoekjaren`,
+    PostDocumentMedewerkers: `${BASEURL}/postDocumentMedewerkers`,
+    PostDocumentRelaties: `${BASEURL}/postDocumentRelaties`,
   };
+   
+  
   
   
