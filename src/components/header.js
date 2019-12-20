@@ -52,8 +52,8 @@ class Header extends Component {
                             <Nav.Link href="#link">{trls('Projects')}</Nav.Link>
                             <Nav.Link href="#link2">{trls('Taken')}</Nav.Link>
                             <NavDropdown title={trls('Hours')} id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">{trls('Hours_off')}</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">{trls('Enter_hours')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('all-hours')}>{trls('Hours_off')}</NavDropdown.Item>
+                                <NavDropdown.Item onSelect={() => this.goRoute('hours')}>{trls('Enter_hours')}</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">{trls('Approve_hours')}</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title={trls('Management')} id="basic-nav-dropdown" className="magage-nav">

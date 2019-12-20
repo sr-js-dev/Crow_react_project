@@ -15,7 +15,9 @@ import Member from '../pages/Member/member_manage'
 import Setting from '../pages/Setting/setting_manage'
 import Taggroup from '../pages/Taggroup/taggroup_manage'
 import Tag from '../pages/Tag/tag_manage'
+import Hour from '../pages/Enterhour/enterhour_manage'
 import Document from '../pages/Document/document_manage'
+import Allhours from '../pages/Allhours/allhours_manage'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { Switch,Router, Route } from 'react-router-dom';
@@ -45,6 +47,8 @@ class Layout extends Component {
                       <Route path="/tag-group" component={Taggroup}/>
                       <Route path="/tag" component={Tag}/>
                       <Route path="/documents" component={Document}/>
+                      <Route path="/all-hours" component={Allhours}/>
+                      <Route path="/hours" component={Hour}/>
                   </Switch>
                 </Router>
                 <Footer/>

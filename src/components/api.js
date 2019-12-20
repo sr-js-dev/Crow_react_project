@@ -69,8 +69,14 @@ export default {
     PostDocumentBoekjaren: `${BASEURL}/postDocumentBoekjaren`,
     PostDocumentMedewerkers: `${BASEURL}/postDocumentMedewerkers`,
     PostDocumentRelaties: `${BASEURL}/postDocumentRelaties`,
+    GetHoursList: `${BASEURL}/getHoursList`,
+    GetDashboardUrl: `${BASEURL}/getDashboardUrl`,
+    BulkAfkeurenUren: `${BASEURL}/bulkAfkeurenUren?id=`,
+    GetLoggedInEmployee: `${BASEURL}/getLoggedInEmployee?username=`,
+    GetSumUrenByEmployeeDate: `${BASEURL}/getSumUrenByEmployeeDate?`,
+    GetUrenStatus: `${BASEURL}/getUrenStatus?`,
+    GetUrenByEmployeeDate: `${BASEURL}/getUrenByEmployeeDate?`,
   };
-   
   
   
   

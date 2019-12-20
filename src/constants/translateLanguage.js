@@ -16,7 +16,7 @@ export const TRANSLATIONS = {
       Purchase: 'Purchase',
       Exploitation: 'Exploitation',
       Coverage: 'Coverage',
-      Staff_members: 'Staff members',
+      Staff_members: 'Staff',
       Activities: 'Activities',
       Zeno: 'Zeno',
       Audit: 'Audit',
@@ -132,7 +132,15 @@ export const TRANSLATIONS = {
       Financial_year: 'FinancialYear',
       Relationship: 'Relationship',
       Project_led: 'Projectled',
-      File_upload_faile: 'File upload faile!'
+      File_upload_faile: 'File upload faile!',
+      All_hours: 'All hours',
+      End_date: 'End Date',
+      Reject: 'Reject',
+      Date: 'Date',
+      Week: 'Week',
+      Status: 'Status',
+      EnterHours: 'Enter Hours',
+      Show_weeks_submitted: 'Show weeks not fully submitted'
     },
 
     nl_BE: {
@@ -269,6 +277,14 @@ export const TRANSLATIONS = {
       Financial_year: 'Boekjaar',
       Relationship: 'Relatie',
       Project_led: 'Projectleide',
-      File_upload_faile: 'Bestand uploaden mislukt!'
+      File_upload_faile: 'Bestand uploaden mislukt!',
+      All_hours: 'All hours',
+      End_date: 'Einddatum',
+      Reject: 'Afwijzen',
+      Date: 'Datum',
+      Week: 'Week',
+      Status: 'Staat',
+      EnterHours: 'Uren invoeren',
+      Show_weeks_submitted: 'Toon weken niet volledig ingediend'
     }
   };

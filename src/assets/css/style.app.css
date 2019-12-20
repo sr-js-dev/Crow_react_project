@@ -225,10 +225,6 @@ input:focus {
   padding-bottom: 50px;
   border-bottom: 1px solid #eeeeee;
 }
-.table-responsive {
-  padding-top: 30px;
-
-}
 th {
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
@@ -246,6 +242,7 @@ td:last-child {
   border-right: 1px solid #dddddd;
 }
 .table-responsive{
+  padding-top: 30px;
   padding-left:4px;
   padding-right:4px;
 }
@@ -338,4 +335,40 @@ table.dataTable.no-footer {
 }
 .document-name{
   margin-bottom: 35px;
+}
+.hour-date{
+  padding-bottom: 20px
+}
+.hour-end-date{
+  width: 50%;
+  margin-bottom: 20px;
+}
+.borderedDiv {
+  outline: 1px solid #EEEEEE;
+}
+.spanBlue {
+  background-color: blue;
+}
+.spanRed {
+  background-color: red;
+}
+.spanOrange {
+  background-color: orange;
+}
+.spanGreen {
+  background-color: green;
+  color: white;
+}
+.spanColor {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+.select-medewerker{
+  padding-left: 10px;
+  width: 100%;
+}
+.enter-hour-th{
+  padding: 5px;
+  height: 40px;
 }
