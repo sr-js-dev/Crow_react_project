@@ -56,7 +56,7 @@ a {
 }
 .glyphicon-envelope {
   position: absolute;
-  top: -2px;
+  top: 1px;
   right: 10px;
   z-index: 2;
   display: block;
@@ -68,7 +68,7 @@ a {
 }
 .glyphicon-lock{
   position: absolute;
-  top: 45px;
+  top: 50px;
   right: 10px;
   z-index: 2;
   display: block;
@@ -285,7 +285,7 @@ td:last-child {
 }
 .myDatePicker {
   width:100%;
-  height:calc(1.5em + .75rem + 8px);;
+  height:calc(1.5em + .75rem + 6px);;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;
@@ -371,4 +371,10 @@ table.dataTable.no-footer {
 .enter-hour-th{
   padding: 5px;
   height: 40px;
+}
+.select-work-hour{
+  width: 30%;
+}
+.form-control {
+  height: calc(1.5em + .75rem + 6px);
 }

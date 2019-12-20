@@ -140,7 +140,10 @@ export const TRANSLATIONS = {
       Week: 'Week',
       Status: 'Status',
       EnterHours: 'Enter Hours',
-      Show_weeks_submitted: 'Show weeks not fully submitted'
+      Show_weeks_submitted: 'Show weeks not fully submitted',
+      Activity: 'Activity',
+      AmountHours: 'AmountHours',
+      Note: 'Note'
     },
 
     nl_BE: {
@@ -285,6 +288,9 @@ export const TRANSLATIONS = {
       Week: 'Week',
       Status: 'Staat',
       EnterHours: 'Uren invoeren',
-      Show_weeks_submitted: 'Toon weken niet volledig ingediend'
+      Show_weeks_submitted: 'Toon weken niet volledig ingediend',
+      Activity: 'Activiteit',
+      AmountHours: 'Aantal uren',
+      Note: 'Opmerking'
     }
   };

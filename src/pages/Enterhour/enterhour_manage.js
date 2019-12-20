@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Row, Container, Col, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import Taggroupform from './taggroup_form';
-import $ from 'jquery';
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
 import Axios from 'axios';
@@ -11,9 +10,9 @@ import { trls } from '../../components/translate';
 import 'datatables.net';
 import * as authAction  from '../../actions/authAction';
 import * as Auth  from '../../components/auth';
-import Sweetalert from 'sweetalert'
 import Select from 'react-select';
 import moment from 'moment';
+import DatePicker from "react-datepicker";
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -32,7 +31,7 @@ class Enterhourmanage extends Component {
             gropuId: '',
             employeeId: '',
             employee: '',
-            // defaultUserData: [],
+            workdate: new Date(),
             currentDate: new Date(),
             statuses: [],
             weekStatuses: [],
@@ -119,7 +118,6 @@ class Enterhourmanage extends Component {
         monday = monday.format("dd DD-MM-YYYY");
         var val = this.changeFormat(monday.substr(3));
         var headers = SessionManager.shared().getAuthorizationHeader();
-        var datesByWeeks = this.state.datesByWeeks;
         Axios.get(API.GetSumUrenByEmployeeDate+'MedewerkerId='+this.state.employeeId+'&Datum='+val, headers)
         .then(response => {
             if (response.data.Items[0]) {
@@ -226,8 +224,6 @@ class Enterhourmanage extends Component {
         lastWeek = this.state.lastWeek;
         secondLastWeek = this.state.secondLastWeek;
         thirdLastWeek = this.state.thirdLastWeek;
-        console.log('22222', currentWeek);
-        // console.log('565', currentWeek.length)
         return (
             <Container>
                 <div className="content__header content__header--with-line">
@@ -344,9 +340,45 @@ class Enterhourmanage extends Component {
                                 />
                             </div>
                         )}
-                        </div>    
-                        </div>
+                        </div>  
+                        <Row style={{padding:19, justifyContent: "space-between"}}>
+                            <Col sm={2}>
+                                {trls("Date")}
+                                <DatePicker name="invoicedate" className="myDatePicker" selected={this.state.workdate} onChange={date =>this.setState({outServiceDate:date})} /> 
+                            </Col>
+                            <Col sm={3}>
+                                {trls("Project")}
+                                <Select
+                                    name="artikel"
+                                    // className="select-lang-class"
+                                    options={this.state.userData}
+                                    placeholder={trls('Select')}
+                                    onChange={val => this.setState({val1:val})}
+                                    defaultValue={this.state.defaultUserData}
+                                />
+                            </Col>
+                            <Col sm={2}>
+                                {trls("Activity")}
+                                <Select
+                                    name="artikel"
+                                    // className="select-work-hour"
+                                    options={this.state.userData}
+                                    placeholder={trls('Select')}
+                                    onChange={val => this.setState({val1:val})}
+                                    defaultValue={this.state.defaultUserData}
+                                />
+                            </Col>
+                            <Col sm={2}>
+                                {trls('AmountHours')}
+                                <Form.Control type="text" name="fisrtname" required placeholder={trls('AmountHours')}/>
+                            </Col>
+                            <Col sm={3}>
+                                {trls("Note")}
+                                <Form.Control type="text" name="fisrtname" required placeholder={trls("Note")}/>
+                            </Col>
+                        </Row>  
                     </div>
+                </div>
             </Container>
         )
         };

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Row, Container, Button, Form } from 'react-bootstrap';
+import { Container, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import Taggroupform from './taggroup_form';
 import $ from 'jquery';
@@ -13,7 +13,6 @@ import * as authAction  from '../../actions/authAction';
 import * as common  from '../../components/common';
 import Sweetalert from 'sweetalert'
 import DatePicker from "react-datepicker";
-import Checkbox from '@material-ui/core/Checkbox';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -52,7 +51,6 @@ class Allhourmanage extends Component {
             //     {Id:38, medewerker: 'Marjolein Leezer', Projectcode: "1219", Datum: "2018-12-02T00:00:00", Week: 1, jaar: 2018, Uren: 1, status: "Goedgekeurd"},
             //     {Id:39, medewerker: 'Marjolein Leezer', Projectcode: "1219", Datum: "2017-12-02T00:00:00", Week: 1, jaar: 2018, Uren: 1, status: "Goedgekeurd"},                              
             // ],
-            hourData: [],
             listOfId: [],
             hourDataArry: []
         };
@@ -116,7 +114,6 @@ class Allhourmanage extends Component {
         var from = Date.parse(start ? start : this.state.startDate);
         var to   = Date.parse(end ? end : this.state.endDate);
         var hourData = this.state.hourData;
-        let data = [];
         let date, rangeDate;
         let hourDataArry = [];
         hourData.map(function (item, key) {
