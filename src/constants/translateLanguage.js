@@ -17,7 +17,7 @@ export const TRANSLATIONS = {
       Purchase: 'Purchase',
       Exploitation: 'Exploitation',
       Coverage: 'Coverage',
-      Staff_members: 'Staff',
+      Staff_members: 'Employer',
       Activities: 'Activities',
       Zeno: 'Zeno',
       Audit: 'Audit',
