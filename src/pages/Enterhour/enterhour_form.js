@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Modal, Row } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import SessionManager from '../../components/session_manage';
@@ -79,7 +79,6 @@ class Enterhourform extends Component {
     
     render(){
         const { data } = this.state;
-        console.log(data)
         return (
             <Modal
                 dialogClassName="custom-dialog"

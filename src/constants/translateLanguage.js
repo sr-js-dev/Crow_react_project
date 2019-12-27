@@ -5,7 +5,8 @@ export const TRANSLATIONS = {
       Password: 'Password',
       Dashboard: 'Dashboard',
       Projects: 'Projects',
-      Taken: 'Taken',
+      Taken: 'Tasks',
+      Task: 'Task',
       Hours: 'Hours',
       Management: 'Management',
       Users: 'Users',
@@ -144,7 +145,10 @@ export const TRANSLATIONS = {
       Activity: 'Activity',
       AmountHours: 'Amount Hours',
       Note: 'Note',
-      Phase: 'Phase'
+      Phase: 'Phase',
+      Version: 'Version',
+      Project_name: 'Project Name',
+      Made_by: 'Made by'
     },
 
     nl_BE: {
@@ -154,6 +158,7 @@ export const TRANSLATIONS = {
       Dashboard: 'Dashboard',
       Projects: 'Projecten',
       Taken: 'Taken',
+      Task: 'Taak',
       Management: 'Beheer',
       Hours: 'Uren', 
       Users: 'Gebruikers',
@@ -293,6 +298,9 @@ export const TRANSLATIONS = {
       Activity: 'Activiteit',
       AmountHours: 'Aantal uren',
       Note: 'Opmerking',
-      Phase: 'Fase'
+      Phase: 'Fase',
+      Version: 'Versie',
+      Project_name: 'Projectnaam',
+      Made_by: 'Aangemaakt door'
     }
   };

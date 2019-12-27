@@ -50,7 +50,7 @@ class Header extends Component {
                         <Nav className="mr-auto">
                             <Nav.Link href="#home">{trls('Dashboard')}</Nav.Link>
                             <Nav.Link href="#link">{trls('Projects')}</Nav.Link>
-                            <Nav.Link href="#link2">{trls('Taken')}</Nav.Link>
+                            <Nav.Link href="/tasks">{trls('Taken')}</Nav.Link>
                             <NavDropdown title={trls('Hours')} id="basic-nav-dropdown">
                                 <NavDropdown.Item onSelect={() => this.goRoute('all-hours')}>{trls('Hours_off')}</NavDropdown.Item>
                                 <NavDropdown.Item onSelect={() => this.goRoute('hours')}>{trls('Enter_hours')}</NavDropdown.Item>

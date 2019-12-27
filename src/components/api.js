@@ -76,6 +76,8 @@ export default {
     GetSumUrenByEmployeeDate: `${BASEURL}/getSumUrenByEmployeeDate?`,
     GetUrenStatus: `${BASEURL}/getUrenStatus?`,
     GetUrenByEmployeeDate: `${BASEURL}/getUrenByEmployeeDate?`,
+    GetEmployee: `${BASEURL}/getMedewerkers`,
+    GetDefaultEmployee: `${BASEURL}/getDefaultMedewerker?`,
   };
   
   

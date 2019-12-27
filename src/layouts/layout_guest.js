@@ -18,6 +18,7 @@ import Tag from '../pages/Tag/tag_manage'
 import Hour from '../pages/Enterhour/enterhour_manage'
 import Document from '../pages/Document/document_manage'
 import Allhours from '../pages/Allhours/allhours_manage'
+import Taken from '../pages/Taken/taken_manage'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { Switch,Router, Route } from 'react-router-dom';
@@ -49,6 +50,7 @@ class Layout extends Component {
                       <Route path="/documents" component={Document}/>
                       <Route path="/all-hours" component={Allhours}/>
                       <Route path="/hours" component={Hour}/>
+                      <Route path="/tasks" component={Taken}/>
                   </Switch>
                 </Router>
                 <Footer/>
