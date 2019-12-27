@@ -119,7 +119,7 @@ class Taggroupmanage extends Component {
                 </div>
                 <div className="orders">
                     <div className="orders__filters justify-content-between">
-                    <Button variant="success" style={{maginTop:20, maginBottome:20}} onClick={()=>this.setState({modaladdShow:true})}><i className="fas fa-plus" style={{paddingRight:5}}></i>{trls('Add_new_taggroup')}</Button> 
+                        <Button variant="success" style={{maginTop:20, maginBottome:20}} onClick={()=>this.setState({modaladdShow:true})}><i className="fas fa-plus" style={{paddingRight:5}}></i>{trls('Add_new_taggroup')}</Button> 
                         <Taggroupform
                             show={this.state.modaladdShow}
                             onHide={() => this.setState({modaladdShow: false})}

@@ -4,7 +4,15 @@ html, body  {
   font-Size:14px
   }
 a {
-  color:#999999
+  color:#ffffff;
+  text-decoration: underline;
+  cursor: pointer
+}
+.aDisabled{
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none !important;
+  color: #555555;
 }
 .container {
     margin-right: auto;
@@ -377,4 +385,7 @@ table.dataTable.no-footer {
 }
 .form-control {
   height: calc(1.5em + .75rem + 6px);
+}
+.custom-dialog {
+  max-width: 90%!important;
 }

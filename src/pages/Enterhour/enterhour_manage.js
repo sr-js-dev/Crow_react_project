@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Row, Container, Col, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import Taggroupform from './taggroup_form';
+import Enterhourform from './enterhour_form';
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
 import Axios from 'axios';
@@ -215,6 +215,10 @@ class Enterhourmanage extends Component {
         this.fillDate(this.state.thirdLastWeek, 0, 21, 5, 'thirdLastWeek')
     };
 
+    showDetails = (date, day) => {
+        this.setState({modaladdShow: true, date, day});
+    }
+
     render () {
         let currentWeek = [];
         let lastWeek = [];
@@ -231,6 +235,14 @@ class Enterhourmanage extends Component {
                 </div>
                 <div className="orders">
                     <div className="orders__filters justify-content-between">
+                        <Enterhourform
+                            show={this.state.modaladdShow}
+                            onHide={() => this.setState({modaladdShow: false})}
+                            onGetTaggroupData={()=>this.getTaggroupData()}
+                            date={this.state.date}
+                            day={this.state.day}
+                            employeeId={this.state.employeeId}
+                        />  
                         <Row>
                             <Col sm={6}>
                                 <Form>
@@ -275,7 +287,19 @@ class Enterhourmanage extends Component {
                                     <tr>
                                         {currentWeek && currentWeek.length===7&&(
                                             currentWeek.map((data,i) =>(
-                                                <th className="enter-hour-th" key={i}>{data.value}</th>
+                                                <th
+                                                    className="enter-hour-th"
+                                                    key={i}
+                                                    style={{backgroundColor: data.minStatus === 5 && data.value === 0 ? 'unset' : 'green', color: data.minStatus === 5 && data.value === 0 ? 'unset' : 'white'}}
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        className={"" + data.value > 0 ? "" : "aDisabled"}
+                                                        onClick={() => {this.showDetails(data.date, true)}}                                                       
+                                                    >
+                                                        {data.value}
+                                                    </a>
+                                                </th>
                                             ))
                                         )}
                                     </tr>
@@ -292,7 +316,19 @@ class Enterhourmanage extends Component {
                                     <tr>
                                         {lastWeek && lastWeek.length===7&&(
                                             lastWeek.map((data,i) =>(
-                                                <th className="enter-hour-th" key={i}>{data.value}</th>
+                                                <th
+                                                    className="enter-hour-th"
+                                                    key={i}
+                                                    style={{backgroundColor: data.minStatus === 5 && data.value === 0 ? 'unset' : 'green', color: data.minStatus === 5 && data.value === 0 ? 'unset' : 'white'}}
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        className={"" + data.value > 0 ? "" : "aDisabled"}
+                                                        onClick={() => {this.showDetails(data.date, true)}}   
+                                                    >
+                                                        {data.value}
+                                                    </a>
+                                                </th>
                                             ))
                                         )}
                                     </tr>
@@ -309,7 +345,19 @@ class Enterhourmanage extends Component {
                                     <tr>
                                         {secondLastWeek && secondLastWeek.length===7&&(
                                             secondLastWeek.map((data,i) =>(
-                                                <th className="enter-hour-th" key={i}>{data.value}</th>
+                                                <th
+                                                    className="enter-hour-th"
+                                                    key={i}
+                                                    style={{backgroundColor: data.minStatus === 5 && data.value === 0 ? 'unset' : 'green', color: data.minStatus === 5 && data.value === 0 ? 'unset' : 'white'}}
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        className={"" + data.value > 0 ? "" : "aDisabled"}
+                                                        onClick={() => {this.showDetails(data.date, true)}}   
+                                                    >
+                                                        {data.value}
+                                                    </a>
+                                                </th>
                                             ))
                                         )}
                                     </tr>
@@ -326,7 +374,20 @@ class Enterhourmanage extends Component {
                                     <tr>
                                         {thirdLastWeek && thirdLastWeek.length===7&&(
                                             thirdLastWeek.map((data,i) =>(
-                                                <th className="enter-hour-th" key={i}>{data.value}</th>
+                                                <th
+                                                    className="enter-hour-th"
+                                                    key={i}
+                                                    style={{backgroundColor: data.minStatus === 5 && data.value === 0 ? 'unset' : 'green', color: data.minStatus === 5 && data.value === 0 ? 'unset' : 'white'}}
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        className={"" + data.value > 0 ? "" : "aDisabled"}
+                                                        onClick={() => {this.showDetails(data.date, true)}}   
+                                                    >
+                                                        {data.value}
+                                                    </a>
+                                                    
+                                                </th>
                                             ))
                                         )}
                                     </tr>
