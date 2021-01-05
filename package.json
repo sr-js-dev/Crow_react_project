@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "datatables.net": "^1.10.20",
